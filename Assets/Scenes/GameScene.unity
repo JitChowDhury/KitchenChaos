@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: ClearCounter
       objectReference: {fileID: 0}
+    - target: {fileID: 7802378989939464827, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8744824248208944784, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -576,7 +580,7 @@ MonoBehaviour:
   m_LightCookieSize: {x: 1, y: 1}
   m_LightCookieOffset: {x: 0, y: 0}
   m_SoftShadowQuality: 1
---- !u!1001 &483309014
+--- !u!1001 &531205965
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -587,6 +591,10 @@ PrefabInstance:
     - target: {fileID: 6164505884085816875, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
       propertyPath: m_Name
       value: ClearCounter (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7802378989939464827, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8744824248208944784, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
       propertyPath: m_LocalPosition.x
@@ -967,4 +975,4 @@ SceneRoots:
   - {fileID: 1216819963}
   - {fileID: 673599006}
   - {fileID: 149169416}
-  - {fileID: 483309014}
+  - {fileID: 531205965}

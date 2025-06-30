@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4589716710238282923}
-  - component: {fileID: 744639803305638029}
+  - component: {fileID: 6588126455851584419}
   m_Layer: 0
   m_Name: ClearCounter_Visual
   m_TagString: Untagged
@@ -33,7 +33,7 @@ Transform:
   - {fileID: 3122943793780361775}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &744639803305638029
+--- !u!114 &6588126455851584419
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -45,6 +45,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 716d650da189c3c4cae00b123c66bfab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clearCounter: {fileID: 0}
+  visualGameObject: {fileID: 8489276541531669327}
 --- !u!1 &8489276541531669327
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,7 +111,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1a0afd856a35421469b28b916116fd9c, type: 2}
+  - {fileID: 592705374249410987, guid: af014c1f44781f6438ddefb983ee8899, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
