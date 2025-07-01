@@ -241,9 +241,17 @@ PrefabInstance:
       value: ClearCounter
       objectReference: {fileID: 0}
     - target: {fileID: 6416715775019128813, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
+      propertyPath: testing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6416715775019128813, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
       propertyPath: kitchenObjectSO
       value: 
       objectReference: {fileID: 11400000, guid: 2fbf16c3b1aaed142ab57d9b35bc4acf, type: 2}
+    - target: {fileID: 6416715775019128813, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
+      propertyPath: secondClearCounter
+      value: 
+      objectReference: {fileID: 2111278628}
     - target: {fileID: 7802378989939464827, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -975,6 +983,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1923421487}
+--- !u!114 &2111278628 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6416715775019128813, guid: c7c62a8ebf6cc8b4f9492aa0995cc4d9, type: 3}
+  m_PrefabInstance: {fileID: 531205965}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a7177f08ad667f441b1396ce3aa0846b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
