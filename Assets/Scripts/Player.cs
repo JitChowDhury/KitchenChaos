@@ -1,11 +1,12 @@
 using System;
 using UnityEngine;
+using static UnityEngine.UIElements.UxmlAttributeDescription;
 
 public class Player : MonoBehaviour,IKitchenObjectParent
 {
-    public static Player Instance { get; private set; }
+    public static Player Instance { get; private set; }//singleton
     
-    public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;
+    public event EventHandler<OnSelectedCounterChangedEventArgs> OnSelectedCounterChanged;//event triggers when counter changes
 
     public class OnSelectedCounterChangedEventArgs : EventArgs
     {
@@ -102,6 +103,8 @@ public class Player : MonoBehaviour,IKitchenObjectParent
         transform.forward = Vector3.Slerp(transform.forward, moveDir, Time.deltaTime*rotateSpeed);
     }
 
+
+   // Uses a raycast to detect counters in the player’s direction and selects them.
     private void HandleInteraction()
     { 
         Vector2 inputVector = gameInput.GetMovementVectorNormalized();

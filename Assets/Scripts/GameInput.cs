@@ -4,7 +4,7 @@ using UnityEngine.InputSystem;
 
 public class GameInput : MonoBehaviour
 {
-    public event EventHandler OnInteractAction;
+    public event EventHandler OnInteractAction;//an event triggered
     private PlayerInputActions playerInputActions;
 
     private void Awake()

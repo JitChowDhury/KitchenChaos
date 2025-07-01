@@ -9,7 +9,7 @@ public class SelectedCounterVisual : MonoBehaviour
     {
         Player.Instance.OnSelectedCounterChanged += Player_OnSelectedCounterChanged;
     }
-
+    //show hide visual 
     private void Player_OnSelectedCounterChanged(object sender, Player.OnSelectedCounterChangedEventArgs e)
     {
         if (e.selectedCounter == clearCounter)

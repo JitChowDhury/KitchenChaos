@@ -1,5 +1,7 @@
 using System;
+using Unity.VisualScripting;
 using UnityEngine;
+using static UnityEditor.Experimental.AssetDatabaseExperimental.AssetDatabaseCounters;
 
 public class ClearCounter : MonoBehaviour,IKitchenObjectParent
 {
@@ -10,7 +12,8 @@ public class ClearCounter : MonoBehaviour,IKitchenObjectParent
 
     private KitchenObject kitchenObject;
 
-
+    //if the counter is empty, spawns a new KitchenObject using kitchenObjectSO.prefab.
+   //If the counter has an object, transfers it to the player.
     public void Interact(Player player)
     {
         if (kitchenObject == null)

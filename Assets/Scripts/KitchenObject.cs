@@ -5,33 +5,36 @@ public class KitchenObject : MonoBehaviour
   [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
 
-    private IKitchenObjectParent KitchenObjectParent;
+    private IKitchenObjectParent KitchenObjectParent;//current parent ( like player or counter)
 
     public KitchenObjectSO GetKitchenObjectSO()
   {
     return kitchenObjectSO;
     }
 
+    //it assigns the kitchen object to new parent
     public void SetKitchenObjectParent(IKitchenObjectParent kitchenObjectParent)
     {
-        if (this.KitchenObjectParent != null)
+        if (this.KitchenObjectParent != null)//check if it has a parent and if then clears it
         {
             this.KitchenObjectParent.ClearKitchenObject();
         }
-        this.KitchenObjectParent = kitchenObjectParent;
+
+        this.KitchenObjectParent = kitchenObjectParent;//asigns the new parent
 
         if (kitchenObjectParent.HasKitchenObject())
         {
             Debug.LogError("ALready has a kitchen object");
+            //return;
         }
-        kitchenObjectParent.SetKitchenObject(this);
+        kitchenObjectParent.SetKitchenObject(this);//sets this object as parent kitchenobject
         transform.parent = kitchenObjectParent.GetKitchenObjectFollowTransform();
         transform.localPosition = Vector3.zero;
     }
 
 
-
-    public IKitchenObjectParent GetKitchenObjectParent()
+    //returns the current Parent
+  public IKitchenObjectParent GetKitchenObjectParent()
   {
     return KitchenObjectParent;
   }
