@@ -2,14 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CuttingCounter : BaseCounter
+public class CuttingCounter : BaseCounter,IHasProgress
 {
 
-    public event EventHandler<OnProgressChangedEventArgs> OnProgressChanged;
-    public class OnProgressChangedEventArgs : EventArgs
-    {
-        public float progressNormalized;
-    }
+    public event EventHandler<IHasProgress.OnProgressChangedEventArgs> OnProgressChanged;
+
 
     public event EventHandler OnCut;
 
@@ -31,7 +28,7 @@ public class CuttingCounter : BaseCounter
                     player.GetKitchenObject().SetKitchenObjectParent(this);
                     cuttingProgress = 0;
                     CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
-                    OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+                    OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
                     {
 
                         progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
@@ -42,22 +39,22 @@ public class CuttingCounter : BaseCounter
             {
                 //player has noting ( not carrying anything)
             }
+        }
+        else
+        {
+            //there is a kitchenobject here
+            if (player.HasKitchenObject())
+            {
+                //player is carrying something
             }
             else
             {
-                //there is a kitchenobject here
-                if (player.HasKitchenObject())
-                {
-                    //player is carrying something
-                }
-                else
-                {
-                    this.GetKitchenObject().SetKitchenObjectParent(player);
-                }
-
+                this.GetKitchenObject().SetKitchenObjectParent(player);
             }
 
-        
+        }
+
+
     }
 
     public override void InteractAlternate(Player player)
@@ -66,15 +63,16 @@ public class CuttingCounter : BaseCounter
         {
             //there is a kitchenobject here and it can be cut
             cuttingProgress++;
-            OnCut?.Invoke(this,EventArgs.Empty);
+            OnCut?.Invoke(this, EventArgs.Empty);
             CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(GetKitchenObject().GetKitchenObjectSO());
-            OnProgressChanged?.Invoke(this, new OnProgressChangedEventArgs
+            OnProgressChanged?.Invoke(this, new IHasProgress.OnProgressChangedEventArgs
             {
 
                 progressNormalized = (float)cuttingProgress / cuttingRecipeSO.cuttingProgressMax
             });
 
-            if (cuttingProgress >= cuttingRecipeSO.cuttingProgressMax) {
+            if (cuttingProgress >= cuttingRecipeSO.cuttingProgressMax)
+            {
                 KitchenObjectSO outputKitchenObjectSO = GetOutputForInput(GetKitchenObject().GetKitchenObjectSO());
                 //there is a kitchenObject here
                 GetKitchenObject().DestroySelf();
@@ -82,14 +80,14 @@ public class CuttingCounter : BaseCounter
                 KitchenObject.SpawnKitchenObject(outputKitchenObjectSO, this);
             }
 
-            }
         }
+    }
 
     public bool HasRecipeWithInput(KitchenObjectSO inputKitchenObjectSO)
     {
         CuttingRecipeSO cuttingRecipeSO = GetCuttingRecipeSOWithInput(inputKitchenObjectSO);
         return cuttingRecipeSO != null;
-        
+
 
     }
 

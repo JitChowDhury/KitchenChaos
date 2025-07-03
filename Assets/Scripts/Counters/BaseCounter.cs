@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class BaseCounter : MonoBehaviour, IKitchenObjectParent
 {
+
     //base counter for all the counters
     [SerializeField] private Transform counterTopPoint;
     private KitchenObject kitchenObject;
