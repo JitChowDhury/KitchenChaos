@@ -7,7 +7,7 @@ public class PlateKitchenObject : KitchenObject
 {
     public event EventHandler<OnIngredientAddedEventArgs> OnIngredientAdded;
 
-     public class OnIngredientAddedEventArgs : EventArgs
+    public class OnIngredientAddedEventArgs : EventArgs
     {
         public KitchenObjectSO kitchenObjectSO;
     }
@@ -44,5 +44,10 @@ public class PlateKitchenObject : KitchenObject
             return true;
         }
 
+    }
+
+    public List<KitchenObjectSO> GetKitchenObjectSOList()
+    {
+        return kitchenObjectSOList;
     }
 }
