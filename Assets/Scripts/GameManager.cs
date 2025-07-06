@@ -7,6 +7,8 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance { get; private set; }
 
     public event EventHandler OnStateChanged;
+    public event EventHandler OnGamePaused;
+    public event EventHandler OnGameUnpaused;
 
     private enum State
     {
@@ -18,16 +20,28 @@ public class GameManager : MonoBehaviour
     }
 
     private State state;
-    [SerializeField]private float waitingToStartTimer = 1f;
+    [SerializeField] private float waitingToStartTimer = 1f;
     [SerializeField] private float countDownToStartTimer = 3f;
     private float gamePlayingTimer;
     [SerializeField] private float gamePlayingTimerMax = 10f;
+    public bool isGamePaused = false;
 
     private void Awake()
     {
         Instance = this;
         state = State.waitingToStart;
     }
+
+    private void Start()
+    {
+        GameInput.Instance.OnPauseAction += GameInput_OnPauseAction;
+    }
+
+    private void GameInput_OnPauseAction(object sender, EventArgs e)
+    {
+        TogglePauseGame();
+    }
+
 
     private void Update()
     {
@@ -74,7 +88,7 @@ public class GameManager : MonoBehaviour
 
     public bool IsGamePlaying()
     {
-        return state == State.GamePlaying;  
+        return state == State.GamePlaying;
     }
 
     public bool isCountDownToStartActive()
@@ -93,7 +107,24 @@ public class GameManager : MonoBehaviour
 
     public float GamePlayingTimerNormalized()
     {
-        return 1- (gamePlayingTimer / gamePlayingTimerMax);
+        return 1 - (gamePlayingTimer / gamePlayingTimerMax);
     }
 
-}
+
+    public void TogglePauseGame()
+    {
+        isGamePaused = !isGamePaused;
+        if (isGamePaused)
+        {
+            Time.timeScale = 0f;
+            OnGamePaused?.Invoke(this,EventArgs.Empty);
+        }
+        else
+        {
+            Time.timeScale = 1f;
+            OnGameUnpaused?.Invoke(this,EventArgs.Empty);
+        }
+
+        }
+
+    }

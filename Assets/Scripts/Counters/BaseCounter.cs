@@ -4,6 +4,11 @@ using System;
 public class BaseCounter : MonoBehaviour, IKitchenObjectParent
 {
     public static event EventHandler OnAnyObjectPlacedHere;
+
+    public static void ResetStaticData()
+    {
+        OnAnyObjectPlacedHere = null;
+    }
     //base counter for all the counters
     [SerializeField] private Transform counterTopPoint;
     private KitchenObject kitchenObject;
